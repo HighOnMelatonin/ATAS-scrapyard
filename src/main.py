@@ -2,7 +2,7 @@
 import json
 
 def openJson(filename) -> dict:
-    ## Open json file, return dictionary
+    ## Open json file with file path of <filename>, return dictionary
     file = open(filename, 'r+')
     users = json.load(file)
     file.close()
