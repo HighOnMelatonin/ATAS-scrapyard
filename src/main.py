@@ -66,12 +66,13 @@ def main():
     file = open("test_market.json", 'r+')
     market = json.load(file)
     file.close()
-    print('===========================================================')
-    print('     Material     |      Quantity      |      Points      |')
+    print("".ljust(64,"="))
+    print(f"|{'Material':^20}|{'Quantity':^20}|{'Points':^20}|")
     for material in market.keys():
-        print('     {}     |      {}      |      {}      |'.\
-              format(material, market[material]['Qty'], market[material]['Points']) )
-    
+        print(f"|{material:^20}|{market[material]['Qty']:^20}|{market[material]['Points']:^20}|")
+
+    print("".ljust(64, "="))
+
     # Ask the user if they want to put in or remove, validate input
     confirmation = str(input('Do you wish to put in items or take away items? (Y/N): ')).upper()
     while confirmation != 'Y' and confirmation != 'N':
@@ -92,11 +93,12 @@ def main():
     print('Change applied! Enjoy your new item.')
 
     # Display new Market dictionary to user.
-    print('===========================================================')
-    print('     Material     |      Quantity      |      Points      |')
+    print("".ljust(64,"="))
+    print(f"|{'Material':^20}|{'Quantity':^20}|{'Points':^20}|")
     for material in market.keys():
-        print('     {}     |      {}      |      {}      |'.\
-              format(material, market[material]['Qty'], market[material]['Points']) )   
+        print(f"|{material:^20}|{market[material]['Qty']:^20}|{market[material]['Points']:^20}|")
+
+    print("".ljust(64, "="))
     print('Your current points is {}.'.format(users[username]))
 
 main()
