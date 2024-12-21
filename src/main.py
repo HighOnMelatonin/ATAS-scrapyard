@@ -8,26 +8,28 @@ def openJson(filename="test_user.json") -> dict:
     file.close()
     return users
 
-def createUser(userID, users):
-    ## Creates a new user (if does not exist), return None
+def createUser(userID, users) -> dict:
+    ## Creates a new user and returns dict with new user
     if userID not in users.keys():
         users[userID] = 0
-    return None
 
-def changePoints(newPoints, userID, users):
+    return users
+
+def changePoints(newPoints, userID, users) -> None:
     ## Add or subtract points for the user, return None
     users[userID] += newPoints
     return None
 
-def changeQty(item, market, confirmation):
+def changeQty(item, market, confirmation) -> None:
     ## Add or subtract the item's quantity in the market, return None
     if confirmation == 'Y':
         market[item]["Qty"] += 1
     else:
         market[item]['Qty'] -= 1
+
     return None
 
-def commitJson(users, filename):
+def commitJson(newFile, filename) -> None:
     ## Open json file, dump into json, return None
     """
     users is a dict of user IDs with their associated points
@@ -37,7 +39,7 @@ def commitJson(users, filename):
     return val: None
     """
     file = open(filename, 'r+')
-    json.dumps(users, file)
+    json.dump(newFile, file)
     file.close()
     return None
 
@@ -55,12 +57,13 @@ def getPoints(item, filename="test_market.json") -> int:
         points = market[item]["Points"]
     return points
 
-def main():
+def main() -> None:
     ## Main loop
     # Get user login, check if they exist in the system already
     username = str(input("Enter your username: "))
     users = openJson()
-    createUser(username, users)
+    ## Check if user exists, if not, create new user
+    users = createUser(username, users)
 
     # Format the market dictionary to display to the user
     file = open("test_market.json", 'r+')
@@ -78,6 +81,7 @@ def main():
     while confirmation != 'Y' and confirmation != 'N':
         print('Invalid input!')
         confirmation = str(input('Do you wish to put in items or take away items? (Y/N): ')).upper()
+    
     item = str(input('Please enter the item you wish to add or remove! (CASE-SENSITIVE): '))
     while item not in market.keys():
         print('Invalid input!')
@@ -89,6 +93,7 @@ def main():
         changePoints(points, username, users)
     else:
         changePoints(-points, username, users)
+
     changeQty(item, market, confirmation)
     print('Change applied! Enjoy your new item.')
 
@@ -100,5 +105,9 @@ def main():
 
     print("".ljust(64, "="))
     print('Your current points is {}.'.format(users[username]))
+
+    ## Commit all changes to the json files
+    commitJson(users, "test_user.json")
+    commitJson(market, "test_market.json")
 
 main()
