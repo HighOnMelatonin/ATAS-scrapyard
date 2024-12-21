@@ -39,7 +39,7 @@ def commitJson(newFile, filename) -> None:
     return val: None
     """
     file = open(filename, 'r+')
-    json.dump(newFile, file)
+    json.dump(newFile, file, indent=4)
     file.close()
     return None
 

@@ -1,2 +1,22 @@
-{"Screws 5mm": {"Qty": 10, "Points": 1}, "Screwdriver": {"Qty": 1, "Points": 10}, "Plywood": {"Qty": 4, "Points": 2}, "Acrylic": {"Qty": 2, "Points": 3}, "Cardboard": {"Qty": 0, "Points": 1}}  "Cardboard":    {"Qty": 0, "Points": 1}
+{
+    "Screws 5mm": {
+        "Qty": 10,
+        "Points": 1
+    },
+    "Screwdriver": {
+        "Qty": 1,
+        "Points": 10
+    },
+    "Plywood": {
+        "Qty": 4,
+        "Points": 2
+    },
+    "Acrylic": {
+        "Qty": 3,
+        "Points": 3
+    },
+    "Cardboard": {
+        "Qty": 1,
+        "Points": 1
+    }
 }
