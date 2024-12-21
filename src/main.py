@@ -3,8 +3,9 @@ import json
 
 def openJson(filename) -> dict:
     ## Open json file, return dictionary
-    file = open(filename)
+    file = open(filename, 'r+')
     users = json.load(file)
+    file.close()
     return users
 
 def createUser(userID):
@@ -15,8 +16,18 @@ def changePoints(newPoints):
     ## Add or subtract points form the user, return None
     return None
 
-def commitJson():
+def commitJson(users, filename):
     ## Open json file, dump into json, return None
+    """
+    users is a dict of user IDs with their associated points
+
+    filename is the filepath for the json file
+
+    return val: None
+    """
+    file = open(filename, 'r+')
+    json.dumps(users, file)
+    file.close()
     return None
 
 def getPoints() -> int:
