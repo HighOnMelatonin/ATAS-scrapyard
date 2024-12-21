@@ -70,7 +70,7 @@ def main():
     print('     Material     |      Quantity      |      Points      |')
     for material in market.keys():
         print('     {}     |      {}      |      {}      |'.\
-              format(material, market[material]['Qty'], market[material['Points']]) )
+              format(material, market[material]['Qty'], market[material]['Points']) )
     
     # Ask the user if they want to put in or remove, validate input
     confirmation = str(input('Do you wish to put in items or take away items? (Y/N): ')).upper()
@@ -96,6 +96,7 @@ def main():
     print('     Material     |      Quantity      |      Points      |')
     for material in market.keys():
         print('     {}     |      {}      |      {}      |'.\
-              format(material, market[material]['Qty'], market[material['Points']]) )   
+              format(material, market[material]['Qty'], market[material]['Points']) )   
     print('Your current points is {}.'.format(users[username]))
-    return None
+
+main()
