@@ -41,11 +41,10 @@ def getPoints(item, filename) -> int:
     market = json.load(file)
     file.close()
     points=0
-    for material in market.keys():
-        if item == material:
-            points = market[material]["Points"]
     if item not in market.keys():
         print("New Item! Please contact admin support.")
+    else:
+        points = market[item]["Points"]
     return points
 
 def main():
