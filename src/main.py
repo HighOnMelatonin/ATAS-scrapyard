@@ -8,12 +8,15 @@ def openJson(filename) -> dict:
     file.close()
     return users
 
-def createUser(userID):
-    ## Creates a new user
+def createUser(userID, users):
+    ## Creates a new user (if does not exist), return None
+    if userID not in users.keys():
+        users[userID] = 0
     return None
 
-def changePoints(newPoints):
+def changePoints(newPoints, userID, users):
     ## Add or subtract points form the user, return None
+    users[userID] += newPoints
     return None
 
 def commitJson(users, filename):
@@ -30,9 +33,20 @@ def commitJson(users, filename):
     file.close()
     return None
 
-def getPoints() -> int:
-    ## get points of an item
-    return None
+def getPoints(item, filename) -> int:
+    ## Opens market dictionary, checks the appropriate points of the item, 
+    # returns the points the item is worth
+    ## Dictionary is in the format of { item : {"Qty": X, "Points": Y} }
+    file = open(filename, 'r+')
+    market = json.load(file)
+    file.close()
+    points=0
+    for material in market.keys():
+        if item == material:
+            points = market[material]["Points"]
+    if item not in market.keys():
+        print("New Item! Please contact admin support.")
+    return points
 
 def main():
     ## Main loop
