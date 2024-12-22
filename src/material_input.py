@@ -4,7 +4,11 @@ app=Flask(__name__)
 
 @app.route("/") #default page
 def home():
-    return render_template("index.html") #display index.html in templates folder
+    if request.method=="POST":
+        user=request.form("user")
+        return redirect(url_for("material",user))
+    else:
+        return render_template("index.html") #display index.html in templates folder
 
 @app.route("/material",methods=["POST","GET"])
 def material():
