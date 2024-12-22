@@ -5,7 +5,10 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 	</head>
 	<body>
+		<h1>ATAS ScrapHouse</h1>
+
 		<table>
+			<p class="table-label">Available materials:</p>
 			<tr>
 				<th>Material</th>
 				<th>Quantity</th>
@@ -21,10 +24,9 @@
 		</table>
 
 		<form action="{{ url_for('material') }}" method="POST">
-			<p>Username:</p>
 			<p><input type="text" name="user" placeholder="Username"/></p>
-			<p><input type="checkbox" name="confirmation">Donating</p>
 			<p><input type="text" name="material" placeholder="material" /></p>
+			<p><input type="checkbox" name="donating" />Donating<input type="checkbox" name="redeeming" />Redeeming</p>
 			<p><input type="submit" value="submit" /></p>
 		</form>
 	</body>
