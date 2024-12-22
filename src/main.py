@@ -29,9 +29,8 @@ def material():
         users = manager.openJson()
         users = manager.createUser(user, users)
 
-        points = manager.getPoints(material)
-        confirmation = request.form.get("confirmation")
-        print(confirmation)
+        # points = manager.getPoints(material)
+        confirmation = request.form.get("donating")
         manager.validateChange(material, user, users, market, confirmation)
         # manager.changeQty(material, market, confirmation)
 

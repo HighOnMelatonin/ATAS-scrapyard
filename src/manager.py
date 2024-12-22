@@ -18,17 +18,17 @@ def createUser(userID, users) -> dict:
 def validateChange(item, username, users, market, confirmation):
     # Get points of the item, update dictionaries accordingly
     points = getPoints(item)
-    if confirmation == 'Y':                             #depositing item -> GAIN points
+    if confirmation == 'on':                             #depositing item -> GAIN points
+        changePoints(points, username, users)
+        changeQty(item, market, confirmation)
+        print('Change applied! Thank you for donating.')
+    else:                                               #removing item -> REMOVE points
         if points > users[username]:                    #trying to redeem an item that they cannot afford
             print('You are unable to redeem this item!')
         else:
-            changePoints(points, username, users)
+            changePoints(-points, username, users)
             changeQty(item, market, confirmation)
-            print('Change applied! Enjoy your new item.')
-    else:                                               #removing item -> REMOVE points
-        changePoints(-points, username, users)
-        changeQty(item, market, confirmation)
-        print('Change applied! Thank you for your submission.')
+            print('Change applied! Enjoy your new item!.')
 
 def changePoints(newPoints, userID, users) -> None:
     ## Add or subtract points for the user, return None
