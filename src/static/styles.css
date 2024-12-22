@@ -3,5 +3,13 @@ body{
 }
 
 table{
-    
+    border: 1px solid #000;
+    border-collapse: collapse;
+    line-height:125%;
+}
+
+th, td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    line-height:  125%;
 }

@@ -30,11 +30,10 @@ def material():
         users = manager.createUser(user, users)
 
         points = manager.getPoints(material)
-        confirmation = request.form.get("confirmation")
-        print(confirmation)
-        manager.changeQty(material, market, confirmation)
+        donating = request.form.get("donating")
+        manager.changeQty(material, market, donating)
 
-        if confirmation:
+        if donating == "on":
             manager.changePoints(points, user, users)
 
         else:
