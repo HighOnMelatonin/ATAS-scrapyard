@@ -37,7 +37,7 @@ def changePoints(newPoints, userID, users) -> None:
 
 def changeQty(item, market, confirmation) -> None:
     ## Add or subtract the item's quantity in the market, return None
-    if confirmation == 'Y':
+    if confirmation == 'on':
         market[item]["Qty"] += 1
     else:
         market[item]['Qty'] -= 1
