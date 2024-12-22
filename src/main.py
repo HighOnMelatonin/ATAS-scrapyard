@@ -32,13 +32,14 @@ def material():
         points = manager.getPoints(material)
         confirmation = request.form.get("confirmation")
         print(confirmation)
-        manager.changeQty(material, market, confirmation)
+        manager.validateChange(material, user, users, market, confirmation)
+        # manager.changeQty(material, market, confirmation)
 
-        if confirmation:
-            manager.changePoints(points, user, users)
+        # if confirmation:
+        #     manager.changePoints(points, user, users)
 
-        else:
-            manager.changePoints(-points, user, users)
+        # else:
+        #     manager.changePoints(-points, user, users)
 
         manager.commitJson(users, "test_user.json")
         manager.commitJson(market, "test_market.json")
