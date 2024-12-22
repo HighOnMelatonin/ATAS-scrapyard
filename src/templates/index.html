@@ -5,7 +5,14 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 	</head>
 	<body>
-		<h1>ATAS ScrapHouse</h1>
+		<h1>ATAS Scrapyard</h1>
+		<style>
+    		.image-right {
+        		float: right;
+        		margin-left: 10px; /* Adds space between the table and the image */
+    		}
+		</style>
+		<img src="{{ url_for('static', filename='adam_smith.jpg') }}" alt="funni" class="image-right" width="350" height="300">
 
 		<table>
 			<p class="table-label">Available materials:</p>
