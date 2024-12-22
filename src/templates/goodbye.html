@@ -4,7 +4,9 @@
 		<title>Scrapyard</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 	</head>
-	<body>
+
+    <body>
+        <p>Goodbye {{ user }}, you have {{ points }} points remaining</p>
 		<table>
 			<tr>
 				<th>Material</th>
@@ -19,13 +21,5 @@
 				</tr>
 			{% endfor %}
 		</table>
-
-		<form action="{{ url_for('material') }}" method="POST">
-			<p>Username:</p>
-			<p><input type="text" name="user" placeholder="Username"/></p>
-			<p><input type="checkbox" name="confirmation">Donating</p>
-			<p><input type="text" name="material" placeholder="material" /></p>
-			<p><input type="submit" value="submit" /></p>
-		</form>
-	</body>
+    </body>
 </html>
