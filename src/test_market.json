@@ -8,7 +8,7 @@
         "Points": 10
     },
     "Plywood": {
-        "Qty": 0,
+        "Qty": 1,
         "Points": 2
     },
     "Acrylic": {
@@ -16,7 +16,7 @@
         "Points": 3
     },
     "Cardboard": {
-        "Qty": 1,
+        "Qty": 0,
         "Points": 1
     }
 }
