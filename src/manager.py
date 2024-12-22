@@ -15,6 +15,21 @@ def createUser(userID, users) -> dict:
 
     return users
 
+def validateChange(item, username, users, market, confirmation):
+    # Get points of the item, update dictionaries accordingly
+    points = getPoints(item)
+    if confirmation == 'on':                             #depositing item -> GAIN points
+        changePoints(points, username, users)
+        changeQty(item, market, confirmation)
+        print('Change applied! Thank you for donating.')
+    else:                                               #removing item -> REMOVE points
+        if points > users[username]:                    #trying to redeem an item that they cannot afford
+            print('You are unable to redeem this item!')
+        else:
+            changePoints(-points, username, users)
+            changeQty(item, market, confirmation)
+            print('Change applied! Enjoy your new item!.')
+
 def changePoints(newPoints, userID, users) -> None:
     ## Add or subtract points for the user, return None
     users[userID] += newPoints
@@ -22,7 +37,7 @@ def changePoints(newPoints, userID, users) -> None:
 
 def changeQty(item, market, confirmation) -> None:
     ## Add or subtract the item's quantity in the market, return None
-    if confirmation == 'Y':
+    if confirmation == 'on':
         market[item]["Qty"] += 1
     else:
         market[item]['Qty'] -= 1
@@ -89,13 +104,17 @@ def main() -> None:
     
     # Get points of the item, update dictionaries accordingly
     points = getPoints(item)
-    if confirmation == 'Y':
-        changePoints(points, username, users)
-    else:
+    if confirmation == 'Y':                             #depositing item -> GAIN points
+        if points > users[username]:                    #trying to redeem an item that they cannot afford
+            print('You are unable to redeem this item!')
+        else:
+            changePoints(points, username, users)
+            changeQty(item, market, confirmation)
+            print('Change applied! Enjoy your new item.')
+    else:                                               #removing item -> REMOVE points
         changePoints(-points, username, users)
-
-    changeQty(item, market, confirmation)
-    print('Change applied! Enjoy your new item.')
+        changeQty(item, market, confirmation)
+        print('Change applied! Thank you for your submission.')
 
     # Display new Market dictionary to user.
     print("".ljust(64,"="))

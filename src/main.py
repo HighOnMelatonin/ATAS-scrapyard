@@ -29,15 +29,16 @@ def material():
         users = manager.openJson()
         users = manager.createUser(user, users)
 
-        points = manager.getPoints(material)
-        donating = request.form.get("donating")
-        manager.changeQty(material, market, donating)
+        # points = manager.getPoints(material)
+        confirmation = request.form.get("donating")
+        manager.validateChange(material, user, users, market, confirmation)
+        # manager.changeQty(material, market, confirmation)
 
-        if donating == "on":
-            manager.changePoints(points, user, users)
+        # if confirmation:
+        #     manager.changePoints(points, user, users)
 
-        else:
-            manager.changePoints(-points, user, users)
+        # else:
+        #     manager.changePoints(-points, user, users)
 
         manager.commitJson(users, "test_user.json")
         manager.commitJson(market, "test_market.json")
