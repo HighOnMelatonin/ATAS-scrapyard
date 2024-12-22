@@ -1,15 +1,21 @@
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-left: 5%;
 }
 
 table{
     border: 1px solid #000;
     border-collapse: collapse;
     line-height:125%;
+    margin-left: 5%;
 }
 
 th, td{
     border: 1px solid #000;
     border-collapse: collapse;
     line-height:  125%;
+}
+
+p.table-label{
+    padding-left:5%;
 }
